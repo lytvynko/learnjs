@@ -85,3 +85,63 @@ let num = "12.2px";
 console.log(parseInt(num)); // вернет 12. 
 
 parseFloat(num) // то же самое, только вернет 12.2
+
+//Перебрать объект
+let options = {
+  name: 'John',
+  width: 1024,
+  colors: {
+    border: 'black',
+    bg: 'white'
+  }
+}
+
+for (let key in options) {
+  if (typeof(options[key]) === 'object') { //перебираем свойства встроенного объекта colors
+    for (let i in options[key]) {
+      console.log(`Свойство ${i} имеет значение ${options[key][i]}`)
+    }
+  } else {console.log(`Свойство ${key} имеет значение ${options[key]}`);}
+  
+}
+
+количество пар ключ-значение объекта
+
+Object.keys(options) //выдаст все ключи объекта options в массиве
+Object.keys(options).length //выдаст количество элементов получившегося массива
+
+//Например
+let options = {
+  name: 'John',
+  width: 1024,
+  colors: {
+    border: 'black',
+    bg: 'white'
+  }
+}
+console.log(`В объекте options ${Object.keys(options).length} элементов`);
+
+//Деструктуризация объекта
+const {border, bg} = options.colors;
+console.log(border);
+
+//Массивы
+.pop() //удаляет последний элемент массива
+.push(10) //добавит 10 в конец массива
+
+//Перебрать массив
+
+let arr = [1, 2, 3, 6, 8];
+for(let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+//или
+for(value of arr) {
+  console.log(value);
+}
+//или лучше
+const arr = [1, 2, 3, 6, 8];
+
+arr.forEach(function(item, i, arr) { //item - элемент массива, i - номер по порядку, arr - ссылка на перебираемый массив;
+  console.log(`${i}: ${item} в массиве ${arr}`)
+});

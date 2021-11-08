@@ -66,3 +66,14 @@ function showMyDB() {
   }
 }
 showMyDB();
+
+function first() {
+  return 5;
+}
+function second (callback) {
+  return 10;
+  callback();
+}
+
+first();
+second(first);
