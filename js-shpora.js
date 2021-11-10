@@ -145,3 +145,89 @@ const arr = [1, 2, 3, 6, 8];
 arr.forEach(function(item, i, arr) { //item - элемент массива, i - номер по порядку, arr - ссылка на перебираемый массив;
   console.log(`${i}: ${item} в массиве ${arr}`)
 });
+
+//split - делает массив из строки, если знаем разделитель
+let str = "fcs, 232, ve, 4343";
+let arr = str.split(', ');
+console.log(arr);
+
+arr.join(', ') - строку из массива
+arr.sort() - отсортирует строку в алфавитном порядке, а цифры: 10, 2, 34, 5...
+
+//отсортировать числа:
+let arr = [11, 4, 5, 3, 66, 23];
+console.log(arr.sort(sortNumbers));
+function sortNumbers(a, b) {
+  return a - b; //по возрастанию и b - a - по убыванию;
+}
+
+//псевдомассив - структура массива, но к нему нельзя применять методы.
+
+//Скопировать объект
+let obj = { //создаем объект
+  'котя': 'глупенькая',
+  'филиус': 'котелюбилиус'
+}
+
+function copy(mainObj) { //функци для копирования 
+  let objCopy = {};
+  for (let key in obj) {
+    objCopy[key] = mainObj[key];
+  }
+  return objCopy;
+}
+let newObj = copy(obj);
+newObj['котя'] = 'хорошая';
+console.log(obj);
+console.log(newObj);
+
+//ИЛИ
+
+const clone = Object.assign({}, add);
+
+//или
+
+newObj = {...obj}; //только в ES9
+
+// поместить один объект в другой
+const numbers = {
+        a: 4,
+        b: 6
+      },
+      add = {
+        c: 7,
+        d: 8
+      }
+console.log(Object.assign(numbers, add)); //Поместили обект add в объект numbers
+
+//Так же можно сделать и копию
+const clone = Object.assign({}, add);
+console.log(clone);
+
+//Скопировать массив
+const oldArr = ['a', 'b', 'c'],
+      newArr = oldArr.slice();
+newArr[1] = 3;      
+console.log(oldArr);
+console.log(newArr);      
+
+//SPREAD-оператор ... - объединяет массивы и можно добавлять другие данные
+const video = ['youtube', 'vimeo', 'rutube'],
+      platform = ['wordpress', 'joomla', 'drupal'],
+      internet = [...video, ...platform];
+console.log(internet);
+
+//прототипирование
+let soldier = {
+  health: 400,
+  armor: 200
+};
+let john = {
+  health: 100
+}
+//john.__proto__ = soldier; //устарело;
+Object.setPrototypeOf(john, soldier); //так надо. теперь soldier - прототип для john
+
+john.armor = 1000;
+console.log(john);
+

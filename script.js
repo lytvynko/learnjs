@@ -68,12 +68,11 @@ function showMyDB() {
 showMyDB();
 
 function first() {
-  return 5;
+  console.log('5');
 }
-function second (callback) {
-  return 10;
+function second (arg, callback) {
+  console.log(`${arg}`);
   callback();
 }
 
-first();
-second(first);
+second('second function', first);
