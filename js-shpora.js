@@ -63,6 +63,16 @@ let calc = (a, b) => {
   return (a + b);
 }
 
+//Callback фукция
+function first() {
+  console.log('5');
+}
+function second (arg, callback) {
+  console.log(`${arg}`);
+  callback();
+}
+second('second function in progress', first);
+
 //свойства
 .length //выдает длину стоки или количество элементов массива
 
@@ -220,7 +230,10 @@ console.log(internet);
 //прототипирование
 let soldier = {
   health: 400,
-  armor: 200
+  armor: 200,
+  sayHello: function() {
+    console.log('Hello');
+  }
 };
 let john = {
   health: 100
@@ -229,5 +242,15 @@ let john = {
 Object.setPrototypeOf(john, soldier); //так надо. теперь soldier - прототип для john
 
 john.armor = 1000;
-console.log(john);
+john.sayHello();
 
+//можно создать объект сразу под прототип. Например
+let soldier = { //это будет прототип
+  health: 400,
+  armor: 200,
+  sayHello: function() {
+    console.log('Hello');
+  }
+};
+let john = Object.create(soldier);
+john.sayHello();
