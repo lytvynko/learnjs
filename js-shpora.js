@@ -172,7 +172,7 @@ function sortNumbers(a, b) {
 }
 
 //псевдомассив - структура массива, но к нему нельзя применять методы.
-
+______________________________________________________________________________________________
 //Скопировать объект
 let obj = { //создаем объект
   'котя': 'глупенькая',
@@ -226,7 +226,7 @@ const video = ['youtube', 'vimeo', 'rutube'],
       platform = ['wordpress', 'joomla', 'drupal'],
       internet = [...video, ...platform];
 console.log(internet);
-
+______________________________________________________________________________________________
 //прототипирование
 let soldier = {
   health: 400,
@@ -254,3 +254,37 @@ let soldier = { //это будет прототип
 };
 let john = Object.create(soldier);
 john.sayHello();
+______________________________________________________________________________________________
+//Элементы на странице
+1. let box = document.getElementById('id');
+   console.log(box);
+2. const box2 = document.getElementsByTagName('div'); // псевдомассив (html коллекция)
+   console.log(box2[1]); //второй элемент коллекции. К самой коллекции обратиться нельзя, только к элементу коллекции.
+
+3. let box3 = document.getElementsByClassName('btn');
+   console.log(box3[0]); //первый элемент в коллекции по классу btn   
+
+4. let box4 = document.querySelectorAll('#id'); //любой css селектор - класс, id, аттрибут...  
+//имеет метод forEach(); 
+   box4.forEach(item => {
+     console.log(item);
+   }); //выведет все айтемы псевдомассива box4
+
+5. let box6 = document.querySelector('.class');
+   console.log(box6); //выведет только первый элемент с селектором .class   
+
+______________________________________________________________________________________________
+//Стили
+box.style.backgroundColor = 'blue';
+box2[0].style.width = '300px';
+box.style.cssText = 'background-color: blue; width: 300px';
+
+// for (let i = 0; i < box2.length; i++) {
+//   box2[i].style.backgroundColor = 'blue';
+// } 
+_________
+надо так:
+_________
+box2.forEach(item => {
+  item.style.backgroundColor = 'blue';
+}) // для каждого элемента коллекции применится css
